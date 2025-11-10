@@ -1,0 +1,66 @@
+#include <stdio.h> 
+#include <string.h> 
+
+// DEFINIÇÃO DA STRUCT
+// Estrutura para agrupar as informações de um único território.
+struct Territorio {
+    char nome[30];  // Nome do território
+    char cor[10];   // Cor do exército
+    int tropas;     // Quantidade de tropas
+};
+
+// FUNÇÃO PRINCIPAL
+int main() {
+    
+    // Define que serão cadastrados 5 territórios.
+    const int NUM_TERRITORIOS = 5;
+    
+    // Declara o vetor (lista) capaz de guardar 5 estruturas Territorio.
+    struct Territorio mapa[NUM_TERRITORIOS];
+    
+    int i; 
+
+    // Mensagem de início e orientação ao usuário.
+    printf("Cadastro Inicial de Territorios para o Jogo WAR\n");
+    printf("Informe os dados para os %d territorios:\n\n", NUM_TERRITORIOS);
+
+    // LAÇO FOR PARA CADASTRO DOS DADOS
+    // Repete o bloco de código 5 vezes para preencher o vetor.
+    for (i = 0; i < NUM_TERRITORIOS; i++) {
+        printf("Territorio %d:\n", i + 1);
+        
+        // Entrada do Nome
+        printf("Nome do Territorio (max 29 caracteres): ");
+        // Uso de scanf com limite para evitar estouro de buffer.
+        scanf("%29s", mapa[i].nome); 
+        
+        // Entrada da Cor
+        printf("Cor do Exercito: ");
+        scanf("%9s", mapa[i].cor);
+        
+        // Entrada de Tropas
+        printf("Quantidade de Tropas: ");
+        scanf("%d", &mapa[i].tropas); 
+        printf("\n");
+    }
+    
+    printf("\nFIM DO CADASTRO.\n");
+    
+    // LAÇO FOR PARA EXIBIÇÃO DOS DADOS
+    // Percorre o vetor e exibe as informações cadastradas.
+    printf("RELATORIO DE TERRITORIOS CADASTRADOS\n");
+    printf("------------------------------------\n");
+    
+    for (i = 0; i < NUM_TERRITORIOS; i++) {
+        // Acessa e imprime os campos de cada struct no vetor 'mapa'.
+        printf("ID: %d\n", i + 1);
+        printf("Nome: %s\n", mapa[i].nome);
+        printf("Cor: %s\n", mapa[i].cor);
+        printf("Tropas: %d\n", mapa[i].tropas);
+        printf("\n");
+    }
+    
+    printf("Programa finalizado.\n");
+    
+    return 0;
+}
